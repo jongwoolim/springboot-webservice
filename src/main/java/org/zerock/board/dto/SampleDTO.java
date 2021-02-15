@@ -1,4 +1,4 @@
-package org.zerock.demo.dto;
+package org.zerock.board.dto;
 
 import lombok.Builder;
 import lombok.Data;

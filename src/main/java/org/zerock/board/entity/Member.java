@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Builder
@@ -19,4 +20,6 @@ public class Member extends BaseEntity{
     private String password;
 
     private String name;
+
+
 }

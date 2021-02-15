@@ -2,10 +2,7 @@ package org.zerock.board.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -21,6 +18,9 @@ public class Reply {
     private String text;
 
     private String  replyer;
+
+    @ManyToOne
+    private Board board;
 
 
 }

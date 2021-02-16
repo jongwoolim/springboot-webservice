@@ -13,15 +13,23 @@ public interface BoardService {
 
     PageResultDTO<BoardDTO, Object[]> getList(PageRequestDTO pageRequestDTO);
 
+    BoardDTO get(Long bno);
+
+    void removeWithReplies(Long bno);
+
 
     default BoardDTO entityToDTO(Board board, Member member, Long replyCount){
 
         return BoardDTO.builder()
+                .bno(board.getBno())
                 .title(board.getTitle())
                 .content(board.getContent())
+                .regDate(board.getRegDate())
+                .modDate(board.getModDate())
                 .writerEmail(member.getEmail())
                 .writerName(member.getName())
-                .replyCount(replyCount.intValue()).build();
+                .replyCount(replyCount.intValue())
+                .build();
 
     }
 

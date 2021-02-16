@@ -5,12 +5,14 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.zerock.board.dto.BoardDTO;
 import org.zerock.board.dto.PageRequestDTO;
 import org.zerock.board.dto.PageResultDTO;
 import org.zerock.board.entity.Board;
 import org.zerock.board.entity.Member;
 import org.zerock.board.repository.BoardRepository;
+import org.zerock.board.repository.ReplyRepository;
 
 import java.util.function.Function;
 
@@ -20,6 +22,7 @@ import java.util.function.Function;
 public class BoardServiceImpl implements BoardService{
 
     private final BoardRepository boardRepository;
+    private final ReplyRepository replyRepository;
 
     @Override
     public Long register(BoardDTO dto) {
@@ -38,5 +41,22 @@ public class BoardServiceImpl implements BoardService{
         Page<Object[]> result = boardRepository.getBoardWithReplyCount(pageRequestDTO.getPageable(Sort.by("bno").descending()));
 
         return new PageResultDTO<>(result, fn);
+    }
+
+    @Override
+    public BoardDTO get(Long bno) {
+        final Object result = boardRepository.getBoardByBno(bno);
+
+        Object[] arr = (Object[]) result;
+
+        return entityToDTO((Board)arr[0], (Member)arr[1], (Long)arr[2]);
+    }
+
+    @Transactional
+    @Override
+    public void removeWithReplies(Long bno) {
+
+        replyRepository.deleteByBno(bno);
+        boardRepository.deleteById(bno);
     }
 }

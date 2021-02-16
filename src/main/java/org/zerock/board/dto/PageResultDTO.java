@@ -27,6 +27,7 @@ public class PageResultDTO<DTO, EN> {
     private List<Integer> pageList;
 
     public PageResultDTO(Page<EN> result, Function<EN, DTO> fn){
+
         dtoList = result.stream().map(fn).collect(Collectors.toList());
 
         totalPage = result.getTotalPages();

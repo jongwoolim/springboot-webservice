@@ -17,6 +17,19 @@ public class BoardServiceTest {
     @Autowired
     private BoardService boardService;
 
+    @Test
+    public  void testModify(){
+
+        BoardDTO boardDTO = BoardDTO.builder()
+                .bno(2L)
+                .title("update title")
+                .content("update content")
+                .build();
+
+        boardService.modify(boardDTO);
+
+    }
+
     @Transactional
     @Test
     public void testRemove(){

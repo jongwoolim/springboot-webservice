@@ -17,6 +17,8 @@ public interface BoardService {
 
     void removeWithReplies(Long bno);
 
+    void modify(BoardDTO boardDTO);
+
 
     default BoardDTO entityToDTO(Board board, Member member, Long replyCount){
 

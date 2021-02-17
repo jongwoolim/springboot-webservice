@@ -18,12 +18,12 @@
 
         <div class="form-group">
             <label>Title</label>
-            <input type="text" class="form-control" name="title" th:value="${dto.title}" readonly>
+            <input type="text" class="form-control" name="title" th:value="${dto.title}" >
         </div>
 
         <div class="form-group">
             <label>Content</label>
-            <textarea class="form-control" rows="5" name="content" readonly>[[${dto.content}]]</textarea>
+            <textarea class="form-control" rows="5" name="content" >[[${dto.content}]]</textarea>
         </div>
 
         <div class="form-group">
@@ -39,7 +39,7 @@
 
         <div class="form-group">
             <label>ModDate</label>
-            <input type="text" class="form-control" name="bno"
+            <input type="text" class="form-control" name="modDate"
                    th:value="${#temporals.format(dto.modDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
         </div>
 
@@ -102,7 +102,6 @@
 
         </script>
     </th:block>
-
 </th:block>
 <head>
     <meta charset="UTF-8">

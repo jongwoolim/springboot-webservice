@@ -8,9 +8,9 @@ import javax.persistence.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@ToString(exclude = "board")
 @Builder
-public class Reply {
+public class Reply extends BaseEntity{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long rno;

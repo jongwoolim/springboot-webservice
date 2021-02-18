@@ -1,26 +1,19 @@
 package org.zerock.board.repository;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.zerock.board.entity.Board;
 import org.zerock.board.entity.Member;
-import org.zerock.board.repository.BoardRepository;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 //@ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -39,6 +32,7 @@ public class BoardRepositoryTest {
         final Page<Object[]> result = boardRepository.searchPage("t", "1,", pageable);
 
     }
+
     @Test
     public void testSearch1(){
         boardRepository.search1();
